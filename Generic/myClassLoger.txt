@@ -1,0 +1,3 @@
+[Info]:[MyClass]:Hello from MyClass.
+[Warning]:[MyClass]:Hello from MyClass.
+[Error]:[MyClass]:Hello from MyClass.Bad parameter for class

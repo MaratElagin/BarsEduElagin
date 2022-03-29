@@ -1,0 +1,3 @@
+[Info]:[MyStruct]:Hello from MyClass.
+[Warning]:[MyStruct]:Hello from MyClass.
+[Error]:[MyStruct]:Hello from MyClass.Bad parameter
