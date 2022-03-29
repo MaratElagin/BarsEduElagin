@@ -5,30 +5,29 @@ public class Program
     static void Main(string[] args)
     {
         //Создание экземпляра обработчика
-        var handler = new KeyPressHandler();
-        
+        var keyPressHandler = new KeyPressHandler();
+
         //Создание обработчика события. При совершении события - выводим на экран введённый символ
-        handler.OnKeyPressed += symbol => Console.WriteLine(symbol);
-        
+        keyPressHandler.OnKeyPressed += (sender, key) =>
+            Console.WriteLine($"Введённый символ: {key}");
+
         //Запускаем обработчик
-        handler.Run();
+        keyPressHandler.Run();
     }
 }
+
 class KeyPressHandler
 {
-    //Создание делегата для события
-    public delegate void EventHandler(char symbol);
-
     //Определение события
-    public event EventHandler? OnKeyPressed; 
-    
+    public event EventHandler<char>? OnKeyPressed;
+
     public void Run()
     {
-        char symbol;
+        char key;
         do
         {
-            symbol = (char) Console.Read();
-            OnKeyPressed?.Invoke(symbol); //Вызов события
-        } while (symbol != 'c');
+            key = Console.ReadKey().KeyChar;
+            OnKeyPressed?.Invoke(this, key); //Вызов события
+        } while (char.ToLower(key) != 'c' && char.ToLower(key) != 'с');
     }
 }
